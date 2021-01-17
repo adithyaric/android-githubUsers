@@ -7,16 +7,15 @@ import android.view.KeyEvent
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.adithya.github.R
 import com.adithya.github.data.model.User
 import com.adithya.github.databinding.ActivityMainBinding
 import com.adithya.github.ui.detail.DetailUserActivity
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMainBinding
-    private lateinit var viewModel : MainViewModel
-    private lateinit var adapter : UserAdapter
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var viewModel: MainViewModel
+    private lateinit var adapter: UserAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         adapter = UserAdapter()
         adapter.notifyDataSetChanged()
 
-        adapter.setOnItemClickCallback(object : UserAdapter.OnItemClickCallback{
+        adapter.setOnItemClickCallback(object : UserAdapter.OnItemClickCallback {
             override fun onItemClicked(data: User) {
                 Intent(this@MainActivity, DetailUserActivity::class.java).also {
                     it.putExtra(DetailUserActivity.EXTRA_USERNAME, data.login)
@@ -46,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                 searchuser()
             }
             etQuery.setOnKeyListener { v, keyCode, event ->
-                if(event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER){
+                if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                     searchuser()
                     return@setOnKeyListener true
                 }
@@ -54,24 +53,26 @@ class MainActivity : AppCompatActivity() {
             }
         }
         viewModel.getSearchUser().observe(this, {
-            if(it!=null){
+            if (it != null) {
                 adapter.setList(it)
                 showLoading(false)
             }
         })
     }
-    private fun searchuser(){
+
+    private fun searchuser() {
         binding.apply {
             val query = etQuery.text.toString()
-            if(query.isEmpty()) return
+            if (query.isEmpty()) return
             showLoading(true)
             viewModel.setSearchUsers(query)
         }
     }
-    private fun showLoading(state: Boolean){
-        if(state){
+
+    private fun showLoading(state: Boolean) {
+        if (state) {
             binding.progressBar.visibility = View.VISIBLE
-        }else{
+        } else {
             binding.progressBar.visibility = View.GONE
         }
     }
