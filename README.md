@@ -2,7 +2,7 @@
 
 # Menu Pencarian
 <center>
-<img src = "images/search.png"/>
+<img width="250px" src = "https://raw.githubusercontent.com/adithyaric/android-githubUsers/main/images/search.PNG"/>
 </center>
 
 # Menu Detail
@@ -12,8 +12,8 @@
     <th>2. Following</th> 
   </tr>
   <tr>
-    <td><img src = "images/detail_followers.png"/></td> 
-    <td><img src = "images/detail_following.png"/></td> 
+    <td><img src = "https://raw.githubusercontent.com/adithyaric/android-githubUsers/main/images/detail_followers.PNG"/></td> 
+    <td><img src = "https://raw.githubusercontent.com/adithyaric/android-githubUsers/main/images/detail_following.PNG"/></td> 
    
   </tr>
 </table>
